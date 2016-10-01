@@ -5,6 +5,9 @@
     <title> Log In </title>
   </head>
   <body>
+    {% if redirected %}
+    Successfully registered.<br><br>
+    {% endif %}
     <form action="/lauth" method="post">
       Username: <input type="text" name="user">
       <br>
