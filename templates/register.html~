@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title> Landing Page </title>
+  </head>
+  <body>
+    <form action="/login" method="post">
+      <input type="submit" name="login" value="Log In">
+    </form>
+    <br>
+    <form action="/register" method="post">
+      <input type="submit" name="register" value="Register">
+    </form>
+  </body>
+</html>
