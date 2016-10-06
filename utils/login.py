@@ -3,7 +3,8 @@ import hashlib
 def login(usernameGiven,passwordGiven): #returns 0 if user does not exist, 1 if wrong password, 2 if correct password
     csv = open("data/users.csv","r+")
     users = csv.read().split("\n")
-
+    del users[len(users)-1]
+    print users
     usersDict = {}
 
     userExists = False

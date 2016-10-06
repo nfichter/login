@@ -5,8 +5,8 @@
     <title> Failed Login </title>
   </head>
   <body>
-    {% if {{outcome}} %}Username does not exist.{% endif %}
-    {% if not {{outcome}} %}Incorrect password.{% endif %}
+    {% if outcome %}Username does not exist.
+    {% else %}Incorrect password.{% endif %}
     <form action="login" method="post">
       <input type="submit" name="Submit" value="Retry">
     </form>

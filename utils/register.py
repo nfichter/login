@@ -12,6 +12,6 @@ def register(usernameGiven,passwordGiven):
     hashObj = hashlib.sha1()
     hashObj.update(passwordGiven)
         
-    csv.write(csv.read()+"\n"+usernameGiven+","+hashObj.hexdigest())
+    csv.write(csv.read()+usernameGiven+","+hashObj.hexdigest()+"\n")
     
     return True

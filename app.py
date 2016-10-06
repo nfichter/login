@@ -1,12 +1,15 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import utils.login
 import utils.register
 
 app = Flask(__name__)
+app.secret_key = "1mansdfLWER1q2nzs=z[234;werw]11111vvvbaq3we"
 
 @app.route("/")
 def welcome():
-    return render_template("index.html")
+    if 'username' in session:
+        return render_template("index.html",loggedin=1,username=session['username'])
+    return render_template("index.html",loggedin=0,username="none")
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -21,6 +24,7 @@ def login():
 def loginAuth():
     loginOutcome = utils.login.login(request.form['user'],request.form['pw'])
     if loginOutcome == 2:
+        session['username'] = request.form['user']
         return redirect(url_for("main"), code=307)
     else:
         return render_template("lauth.html",outcome=loginOutcome)
@@ -39,7 +43,7 @@ def registerAuth():
 @app.route("/main", methods=["POST"])
 def main():
     return "You made it!"
-   
+
 if __name__ == "__main__":
     app.debug = True
     app.run()
