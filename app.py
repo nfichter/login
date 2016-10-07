@@ -14,8 +14,6 @@ def welcome():
 @app.route("/login", methods=["POST"])
 def login():
     redir = False
-    for key in request.form:
-        print key, request.form[key]
     if request.form['Submit'] == "Register":
         redir = True
     return render_template("login.html",redirected = redir)
