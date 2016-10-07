@@ -7,6 +7,10 @@
   <body>
     {% if loggedin == 1 %}
     Welcome back, {{username}}.
+
+    <form action="/logout" method="post">
+      <input type="submit" name="Submit" value="Log Out">
+    </form>
     {% else %}
     <form action="/login" method="post">
       <input type="submit" name="Submit" value="Log In">

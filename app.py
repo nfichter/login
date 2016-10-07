@@ -25,7 +25,7 @@ def loginAuth():
     loginOutcome = utils.login.login(request.form['user'],request.form['pw'])
     if loginOutcome == 2:
         session['username'] = request.form['user']
-        return redirect(url_for("main"), code=307)
+        return redirect("/")
     else:
         return render_template("lauth.html",outcome=loginOutcome)
 
@@ -40,9 +40,10 @@ def registerAuth():
    else:
        return render_template("rauth.html")
 
-@app.route("/main", methods=["POST"])
-def main():
-    return "You made it!"
+@app.route("/logout", methods=["POST"])
+def logout():
+    session.pop('username')
+    return redirect("/")
 
 if __name__ == "__main__":
     app.debug = True
